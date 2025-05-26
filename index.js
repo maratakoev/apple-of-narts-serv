@@ -1,8 +1,11 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 
 const users = []; // временное хранилище пользователей
@@ -49,4 +52,4 @@ app.get('/dashboard', authMiddleware, (req, res) => {
   res.send(`Добро пожаловать, ${req.user.username}`);
 });
 
-app.listen(3000, () => console.log('Сервер на 3000'));
+app.listen(3001, () => console.log('Сервер на 3001'));
